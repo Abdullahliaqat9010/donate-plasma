@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import NavBar from './components/navbar'
+import Footer from './components/footer'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import Home from './screens/home'
+import BecomeDonor from './screens/becomeDonor'
+import FindDonor from './screens/findDonor'
+import ManageProfile from './screens/manageProfile'
+import About from './screens/about'
+import NoPage from './screens/nopage'
 
 function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <NavBar/>
+      <Router>
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/becomeDonor' component={BecomeDonor} />
+            <Route path='/findDonor' component={FindDonor} />
+            <Route path='/manageProfile' component={ManageProfile} />
+            <Route path='/about' component={About} />
+            <Route component={NoPage} /> 
+          </Switch>
+      </Router>
+      <Footer/>  
+    </React.Fragment>
   );
 }
 
