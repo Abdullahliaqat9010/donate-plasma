@@ -1,31 +1,34 @@
 import React from 'react'
-import {Navbar,Nav,NavDropdown} from 'react-bootstrap'
-
+import {Navbar,Nav} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
+import styled from 'styled-components'
+import bg from '../assets/bg.png'
+const StyledLink = styled.button`
+    color : white;
+    margin : 5px 5px;
+    border-radius : 5px;
+    border : 2px solid #f67777; 
+`;
+const BackgroundImage = styled.div`
+    background-image : url(${bg});
+    background-size : cover;
+    background-repeat: no-repeat;
+    height : 350px; 
+`;
 const NavBar = ()=>{
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="mr-auto">
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
-                <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                </NavDropdown>
-                </Nav>
-                <Nav>
-                <Nav.Link href="#deets">More deets</Nav.Link>
-                <Nav.Link eventKey={2} href="#memes">
-                    Dank memes
-                </Nav.Link>
-                </Nav>
-            </Navbar.Collapse>
-        </Navbar>
+        <BackgroundImage>
+            <Navbar collapseOnSelect expand="lg" variant="dark" bg="transparent">
+                <Navbar.Brand href="#home">Donate Plasma</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="ml-auto" >
+                        <Link to="/about" ><StyledLink>About</StyledLink></Link>
+                        <Link to="/" ><StyledLink>Home</StyledLink></Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+        </BackgroundImage>
     )
 }
 
