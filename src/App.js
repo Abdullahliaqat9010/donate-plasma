@@ -15,20 +15,20 @@ function App() {
   
   return (
     <React.Fragment>
-      <NavBar/>
-      <Layout>
-        <Router>
-            <Switch>
-              <Route path='/' exact component={Home} />
-              <Route path='/becomeDonor' component={BecomeDonor} />
-              <Route path='/findDonor' component={FindDonor} />
-              <Route path='/manageProfile' component={ManageProfile} />
-              <Route path='/about' component={About} />
-              <Route component={NoPage} /> 
-            </Switch>
-        </Router>
-      </Layout>
-      <Footer/>  
+      <Router>
+        <NavBar/>
+        <Layout>
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/becomeDonor' component={BecomeDonor} />
+            <Route path='/findDonor' component={FindDonor} />
+            <Route path='/manageProfile' component={ManageProfile} />
+            <Route path='/about' component={About} />
+            <Route component={NoPage} /> 
+          </Switch>  
+        </Layout>
+        <Footer/>  
+      </Router>
     </React.Fragment>
   );
 }
