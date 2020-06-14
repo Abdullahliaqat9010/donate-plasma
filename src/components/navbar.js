@@ -1,42 +1,83 @@
 import React from 'react'
-import {Navbar,Nav} from 'react-bootstrap'
+import {Navbar,Nav,Container} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
-import bg from '../assets/bg.png'
+import logo from '../assets/logo.svg'
 
 const StyledLink = styled.div`
-    color : white;
-    margin : 5px 5px;
-    border-radius : 5px;
-    border : 2px solid #f67777;
-    width : 70px;
-    text-align : center;
+    color : black;
+    font-size : 17px;
+    display : flex;
+    align-items: center;
+    justify-content : center;
+    width: 120px;
+    height : 40px;
+    border-radius : 5px; 
+    margin-left : 10px;
+    
+        
     &:hover {
-        color : #f67777;
-        background-color : white;
-    }; 
+        color : white;
+        background-color : #f7464c;
+        border : none;
+    };
+    @media (max-width:1000px) {
+        margin-top : 10px;
+        margin-bottom : 10px;
+        margin-left : 0px;
+        padding: 10px;
+        border : 1px solid #ccc;
+    }  
 `;
 
-const BackgroundImage = styled.div`
-    background-image : url(${bg});
-    background-size : cover;
-    background-repeat: no-repeat;
-    height : 350px; 
+const Logo = styled.img`
+    
+    width: 50px;
+    height: 50px;
+    alt : "logo";
+    margin-right : 10px;
+    content : url(${logo});
+
+    @media (min-width:1000px) {
+        width: 100px;
+        height: 100px;
+        margin-right : 10px;
+    }  
 `;
+
+const StyledNavbarBrand = styled(Navbar.Brand)`
+    
+    font-weight:bold;
+    font-size:20px;
+    @media (min-width:1000px) {
+        font-size:30px;
+    }
+`;
+
+const Divider = styled.hr`
+    margin-top : -5px;
+    border-top: 1px solid #ccc;
+`;
+
 const NavBar = ()=>{
     return (
-        <BackgroundImage>
-            <Navbar collapseOnSelect expand="lg" variant="dark" bg="transparent">
-                <Navbar.Brand href="/">Donate Plasma</Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="ml-auto" >
-                        <Link style={{textDecoration:"none"}} to="/about" ><StyledLink>About</StyledLink></Link>
-                        <Link style={{textDecoration:"none"}} to="/" ><StyledLink>Home</StyledLink></Link>
-                    </Nav>
-                </Navbar.Collapse>
+        <React.Fragment>    
+            <Navbar collapseOnSelect expand="lg" variant="light">
+                <Container>
+                    <StyledNavbarBrand style={{color:"#f7464c"}} href="/"><Logo />Donate Plasma</StyledNavbarBrand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="ml-auto pr-5" >
+                            <Link style={{textDecoration:"none"}} to="/" ><StyledLink>Home</StyledLink></Link>
+                            <Link style={{textDecoration:"none"}} to="/about" ><StyledLink>About Us</StyledLink></Link>
+                            <Link style={{textDecoration:"none"}} to="/becomeDonor" ><StyledLink>Donate Now</StyledLink></Link>
+                            <Link style={{textDecoration:"none"}} to="/findDonor" ><StyledLink>Find Donor</StyledLink></Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
             </Navbar>
-        </BackgroundImage>
+            <Divider/>
+        </React.Fragment>
     )
 }
 
