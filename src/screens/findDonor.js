@@ -294,12 +294,12 @@ return(
 <button type="button" className="btn btn-secondary btn-lg btn-block">Search</button>
 </div>
 <div>
-<h4>Results:</h4>
-<ol className = 'list group'>
+{/* <h4>Results:</h4> */}
+<ul className = 'list group' style={{marginLeft:-40,marginTop:20}} >
     {people.map((person) => {
           return(
-            <li class="list-group-item list-group-item-light " key={person.key}>
-            <div class="row">
+            <li className="list-group-item list-group-item-light" key={person.key}>
+            <div className="row">
             <div className = "col-sm">
             <b>Name: </b>
             <span>{person.firstName} {person.lastName} </span>
@@ -313,13 +313,17 @@ return(
             <span>{person.info.bloodGroup}</span>
             </div>
             <div className = "col-sm">
-            <button type="button" class="btn btn-success btn-sm float-right">Contact</button>
+            <b>City: </b>
+            <span>Lahore </span>
+            </div>
+            <div className = "col-sm">
+            <button type="button" className="btn btn-success btn-sm float-right">Contact</button>
             </div>
             </div>
             </li>
           )
       })}
-</ol>
+</ul>
 </div>
 </div>
 )
