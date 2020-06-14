@@ -8,7 +8,7 @@ import styled from 'styled-components'
 
 const BtnContainer = styled.div`
     display : flex;
-    flex-direction : column;
+    flex-direction : row;
     align-items : center;
     justify-content : center;
 `;
@@ -47,7 +47,7 @@ const Home = ()=>{
                 <Caption>"IF ANYONE SAVED A LIFE IT WOULD BE AS IF HE SAVED THE LIFE OF THE WHOLE HUMANITY"<br/> QURAN 5:32</Caption>
             </CaptionContainer>
             <StyledJumbotron />
-            <BtnContainer className="d-lg-none" >
+            <BtnContainer  >
                 <StlyedBtn >Donate Now</StlyedBtn>
                 <StlyedBtn >Find Donor</StlyedBtn>
             </BtnContainer>
