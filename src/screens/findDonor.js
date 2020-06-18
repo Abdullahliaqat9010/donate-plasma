@@ -2,15 +2,15 @@ import React from 'react';
 
 
 const people = [
-    {key : '123', firstName: 'Elson', lastName: 'Correia', info: {age: 24, bloodGroup : 'A positive'}},
-    {key : '124',firstName: 'John', lastName: 'Doe', info: {age: 18, bloodGroup : 'A positive'}},
-    {key : '125', firstName: 'Jane', lastName: 'Doe', info: {age: 34, bloodGroup : 'A positive'}},
-    {key : '126', firstName: 'Maria', lastName: 'Carvalho', info: {age: 22, bloodGroup : 'A positive'}},
-    {key : '127', firstName: 'Kelly', lastName: 'Correia', info:{age: 23, bloodGroup : 'A positive'}},
-    {key : '128', firstName: 'Don', lastName: 'Quichote', info: {age: 39, bloodGroup : 'A positive'}},
-    {key : '129', firstName: 'Marcus', lastName: 'Correia', info: {age: 20, bloodGroup : 'A positive'}},
-    {key : '130', firstName: 'Bruno', lastName: 'Gonzales', info: {age: 25, bloodGroup : 'A positive'}},
-    {key : '131', firstName: 'Alonzo', lastName: 'Correia', info: {age: 44, bloodGroup : 'A positive'}}
+    {key : '123', Name: 'Elson Correia', info: {age: 24, bloodGroup : 'A positive', city : 'Lahore'}},
+    {key : '124', Name: 'John Doe', info: {age: 18, bloodGroup : 'A positive', city : 'Lahore'}},
+    {key : '125', Name: 'Jane Doe', info: {age: 34, bloodGroup : 'A positive', city : 'Lahore'}},
+    {key : '126', Name: 'Maria Carvalho', info: {age: 22, bloodGroup : 'A positive', city : 'Lahore'}},
+    {key : '127', Name: 'Kelly Correia', info:{age: 23, bloodGroup : 'A positive', city : 'Lahore'}},
+    {key : '128', Name: 'Don Quichote', info: {age: 39, bloodGroup : 'A positive', city : 'Lahore'}},
+    {key : '129', Name: 'Marcus Correia', info: {age: 20, bloodGroup : 'A positive', city : 'Lahore'}},
+    {key : '130', Name: 'Bruno Gonzales', info: {age: 25, bloodGroup : 'A positive', city : 'Lahore'}},
+    {key : '131', Name: 'Alonzo Correia', info: {age: 44, bloodGroup : 'A positive', city : 'Lahore'}}
   ]
   const getValueFromCity = (ref) =>
   {
@@ -302,7 +302,7 @@ return(
             <div className="row">
             <div className = "col-sm">
             <b>Name: </b>
-            <span>{person.firstName} {person.lastName} </span>
+            <span>{person.Name}</span>
             </div>
             <div className = "col-sm">
             <b> Age: </b>
@@ -314,7 +314,7 @@ return(
             </div>
             <div className = "col-sm">
             <b>City: </b>
-            <span>Lahore </span>
+            <span>{person.info.city} </span>
             </div>
             <div className = "col-sm">
             <button type="button" className="btn btn-success btn-sm float-right">Contact</button>
