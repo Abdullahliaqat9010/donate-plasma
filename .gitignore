@@ -26,3 +26,4 @@ yarn-error.log*
 /backend/node_modules
 /backend/.env
 /backend/serviceAccountKey.json
+/backend/.gitignore

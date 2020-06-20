@@ -1,7 +1,7 @@
 import React from 'react';
 
-const CityOption = ({getValueFromCity}) => (
-    <select className="form-control" onChange={(ref)=>getValueFromCity(ref.target.value)}>
+const CityOption = ({getValueFromCity,required,value}) => (
+    <select value={value} required={required} className="form-control" onChange={(ref)=>getValueFromCity(ref.target.value)}>
         <option value="" hidden>Select The City</option>
         <option value="Islamabad">Islamabad</option>
         <option value="" disabled style = {{fontWeight : 'bold'}}>Punjab Cities</option>
@@ -40,7 +40,6 @@ const CityOption = ({getValueFromCity}) => (
         <option value="Haroonabad">Haroonabad</option>
         <option value="Hasilpur">Hasilpur</option>
         <option value="Haveli">Haveli</option>
-        <option value="Lakha">Lakha</option>
         <option value="Jalalpur">Jalalpur</option>
         <option value="Jattan">Jattan</option>
         <option value="Jampur">Jampur</option>
@@ -59,6 +58,7 @@ const CityOption = ({getValueFromCity}) => (
         <option value="Kot Adu">Kot Adu</option>
         <option value="Jauharabad">Jauharabad</option>
         <option value="Lahore">Lahore</option>
+        <option value="Lakha">Lakha</option>
         <option value="Lalamusa">Lalamusa</option>
         <option value="Layyah">Layyah</option>
         <option value="Liaquat Pur">Liaquat Pur</option>

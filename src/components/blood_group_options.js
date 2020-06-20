@@ -1,7 +1,7 @@
 import React from 'react'
 
-const BloodGroupOptions = ({getValueFromBloodGroup}) => (
-    <select className="form-control" onChange={(ref)=>getValueFromBloodGroup(ref.target.value)} >
+const BloodGroupOptions = ({getValueFromBloodGroup,required,value}) => (
+    <select value={value} required={required} className="form-control" onChange={(ref)=>getValueFromBloodGroup(ref.target.value)} >
         <option value="" hidden>Select blood group</option>
         <option value="A positive">A positive</option>
         <option value="A negative">A negative</option>
