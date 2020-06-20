@@ -28,7 +28,7 @@ const FindDonor = ()=>{
     changeBloodGroup(_bloodGroup)
   }
   const fetchDonors = async() => {
-    const res = await axios.get('http://localhost:5000/donors',{
+    const res = await axios.get('https://donate-plasma.herokuapp.com/donors',{
       params : {
         city : city,
         bloodGroup : bloodGroup

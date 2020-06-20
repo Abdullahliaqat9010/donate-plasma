@@ -36,7 +36,7 @@ const BecomeDonor = (props)=> {
     }
     const fetchProfile = () => {
         return new Promise(async(res,rej)=>{
-            const response = await axios.get('http://localhost:5000/profile')
+            const response = await axios.get('https://donate-plasma.herokuapp.com/profile')
             const _profile = response.data
             console.log(_profile)
             if(_profile.length > 0){
