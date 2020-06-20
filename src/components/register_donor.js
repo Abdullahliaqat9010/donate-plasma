@@ -54,7 +54,7 @@ const RegisterDonor = ({phone,fetchProfile})=>{
     const submitForm = async (e) => {
         e.preventDefault()
         setLoading(true)
-        const res = await axios.post('http://localhost:5000/donor',{
+        await axios.post('https://donate-plasma.herokuapp.com/donor',{
             name,
             age,
             city,

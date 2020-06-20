@@ -74,7 +74,7 @@ const EditDeleteDonor = (props) => {
     const EditDonor = async (e) => {
         e.preventDefault()
         setEditLoading(true)
-        const res = await axios.put('http://localhost:5000/donor',{
+        const res = await axios.put('https://donate-plasma.herokuapp.com/donor',{
             name,
             age,
             city,
@@ -89,7 +89,7 @@ const EditDeleteDonor = (props) => {
     const DeleteDonor = async (e) => {
         e.preventDefault()
         setDeleteLoading(true)
-        const res = await axios.delete('http://localhost:5000/donor')
+        const res = await axios.delete('https://donate-plasma.herokuapp.com/donor')
         setDeleteLoading(false)
         console.log(res.data)
         //fetchProfile()
