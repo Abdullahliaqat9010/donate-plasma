@@ -1,10 +1,7 @@
 import React from 'react'
-//import BecomeDonorSection from '../components/become_donor_section'
-//import FindDonorSection from '../components/find_donor_section'
-//import CarouselComponent from '../components/carousel_component'
 import StyledJumbotron from '../components/jumbutron'
-//import Button from 'react-bootstrap/Button'
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 const BtnContainer = styled.div`
     display : flex;
@@ -22,7 +19,7 @@ const StlyedBtn = styled.button`
     box-shadow : 0px 5px 10px #ccc;
     background-color : #f7464c;
     color : white;
-    &:active{
+    &:active,&:hover{
         background-color : white;
         color : #f7464c;
     }
@@ -48,8 +45,8 @@ const Home = ()=>{
             </CaptionContainer>
             <StyledJumbotron />
             <BtnContainer  >
-                <StlyedBtn >Donate Now</StlyedBtn>
-                <StlyedBtn >Find Donor</StlyedBtn>
+                <Link to="/becomeDonor" ><StlyedBtn >Donate Now</StlyedBtn></Link>
+                <Link to="/findDonor" ><StlyedBtn >Find Donor</StlyedBtn></Link>
             </BtnContainer>
         </React.Fragment>
     )
