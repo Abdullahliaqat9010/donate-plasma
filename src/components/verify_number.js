@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 
 const LoginContainer = styled.div`
-    height : 500px;
+    height : 550px;
     width : auto;
     display : flex;
     align-items : center;
@@ -14,7 +14,7 @@ const LoginContainer = styled.div`
 `;
 
 const LoginContainerContent = styled.div`
-    height : 500px;
+    height : 550px;
     width : 350px;
     background-color : white;
     border-radius : 5px;
@@ -59,7 +59,20 @@ const ChangeMobile = styled.button`
     outline : none;
     &:hover , &:active {
         color : #f7464c;
+        border : none;
+        outline : none;
     }
+`;
+
+const StyledInput = styled.input`
+    border:${({error})=>{
+        if(error){
+            return "2px solid red"
+        }
+        else{
+            return "1px solid #e0dede"
+        }
+    }};
 `;
 
 const VerifyNumber = () => {
@@ -68,6 +81,8 @@ const VerifyNumber = () => {
     const [code,_setCode] = React.useState("")
     const [phone,_setPhone] = React.useState("")
     const [verfiyCodeEvent,setVerifyCodeEvent] = React.useState(null)
+    const [numberError, setNumberError] = React.useState(false)
+    const [codeError, setCodeError] = React.useState(false)
     
     const setPhoneNumber = (e) => {
         _setPhone(e.target.value)
@@ -78,49 +93,83 @@ const VerifyNumber = () => {
     }
 
     const sendVerificationCode = async() => {
-        setLoading(true)
-        let _phone = phone
-        _phone = _phone.substr(1)
-        const pk = "+92"
-        _phone = pk.concat(_phone)
-        let recaptcha =  new firebase.auth.RecaptchaVerifier('recaptcha-container',{size:"invisible"})
-        await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
-        const e = await firebase.auth().signInWithPhoneNumber(_phone,recaptcha)
-        setVerifyCodeEvent(e)
-        setLoading(false)
-        setSendCode(false)
+        try {
+            setLoading(true)
+            let _phone = phone
+            _phone = _phone.substr(1)
+            const pk = "+92"
+            _phone = pk.concat(_phone)
+            
+            let recaptcha = window.RecaptchaVerifier
+            await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+            const e = await firebase.auth().signInWithPhoneNumber(_phone,recaptcha)
+            setVerifyCodeEvent(e)
+            setLoading(false)
+            setSendCode(false)
+            setNumberError(false)
+        } catch (error) {
+            
+            setLoading(false)
+            setNumberError(true)
+        }
     }
 
-    const verifyCode = () => {
-        setLoading(true)
-        verfiyCodeEvent.confirm(code)
+    const verifyCode = async() => {
+        try {
+            setLoading(true)
+            await verfiyCodeEvent.confirm(code)
+            setLoading(false)
+            setCodeError(false)
+        } catch (error) {
+            setLoading(false)
+            setCodeError(true)
+            console.log(error)
+        }
     }
+
+    React.useEffect(()=>{
+        if(window.RecaptchaVerifier){
+            window.RecaptchaVerifier.reset()
+        }
+        else{
+            window.RecaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container',{size:"invisible"})
+        }
+        
+        return ()=>{
+            window.RecaptchaVerifier.reset()
+        }
+    },[])
 
     return(
         <LoginContainer>
         <LoginContainerContent>
             <img src={logo} width={100} height={100} alt="Logo"/>
             <LoginHeading>Verify your Phone Number</LoginHeading>
-            <div style={{width:280,marginTop:40}}  className="form-group">
+            
+            <div style={{width:280,marginTop:40,height:80}}  className="form-group">
                 <label style={{fontSize:12,fontWeight:400,color:"#f7464c"}} >Phone Number</label>
-                <input 
+                <StyledInput 
                     disabled={!sendCode} 
                     type="tel" 
                     className="form-control" 
                     placeholder="Enter your Phone Number"
                     maxLength={11} 
                     onChange = {setPhoneNumber}
+                    error={numberError}
                 />
+                {numberError && <p style={{fontSize:10,color:"red"}} >Invalid Phone Number, Try Again</p>}
             </div>
-            <div style={{width:280}}  className="form-group">
+            <div style={{width:280,height:80}}  className="form-group">
                 <label style={{fontSize:12,fontWeight:400,color:"#f7464c"}} >Code</label>
-                <input
+                <StyledInput
                     disabled={sendCode}  
                     className="form-control" 
                     placeholder="Enter your 6 digit OTP"
                     maxLength={6}
-                    onChange={setOTPCode} 
+                    onChange={setOTPCode}
+                    error={codeError} 
                 />
+                {codeError && <p style={{fontSize:10,color:"red"}} >Invalid or Expired OTP. Try Again</p>}
             </div>
             {
                 sendCode ? 
@@ -141,7 +190,13 @@ const VerifyNumber = () => {
             }
             {
                 !sendCode && 
-                <ChangeMobile onClick={()=>setSendCode(false)} >Change mobile number?</ChangeMobile> 
+                <ChangeMobile 
+                    onClick={()=>{
+                        setSendCode(true)
+                        window.RecaptchaVerifier.reset()
+                    }} 
+                >
+                Change mobile number?</ChangeMobile> 
             }
         </LoginContainerContent>    
     </LoginContainer>

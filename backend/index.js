@@ -45,6 +45,12 @@ app.get('/donors', async(req,res)=>{
     res.send(donors)
 })
 
+app.get('/donor',authentication, async(req,res)=>{
+    const {uid} = req.query
+    const donor = await Donor.findOne({uid},{_id:0}).exec()
+    res.send(donor)
+})
+
 app.post('/donor',authentication,async(req,res)=>{
     const {
         name,

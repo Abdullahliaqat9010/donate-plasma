@@ -9,13 +9,13 @@ const Container = styled.div`
     display:flex;
     align-items:flex-start;
     justify-content:center;
-    height:600px;
+    height:650px;
     width:auto;
 `;
 
 const ContainerContent = styled.div`
     width:350px;
-    height:600px;
+    height:650px;
     display:flex;
     align-items:center;
     justify-content:flex-start;
@@ -29,7 +29,7 @@ const ContainerContent = styled.div`
 const SubmitButton = styled.button`
     width : 120px; 
     height : 50px;
-    margin-left : 90px;
+    /* margin-left : 60px; */
     background-color : #f7464c;
     border : none;
     border-radius : 5px;
@@ -72,7 +72,7 @@ const RegisterDonor = ({phone,fetchProfile})=>{
     return(
         <Container >
         <ContainerContent >
-        <form style={{flex:1,width:300}} onSubmit={submitForm} >
+        <form style={{flex:1,width:260,paddingTop:30}} onSubmit={submitForm} >
             <h3 style={{color:"#f7464c"}} >Registration</h3>
 
             <div style={{marginTop:30}} className="form-group">
@@ -91,7 +91,8 @@ const RegisterDonor = ({phone,fetchProfile})=>{
                     required 
                     type="number" 
                     className="form-control" 
-                    placeholder="Enter your Age" 
+                    placeholder="Enter your Age"
+                    min={16} 
                     onChange={(e)=>setAge(e.target.value)}
                 />
             </div>
@@ -109,14 +110,16 @@ const RegisterDonor = ({phone,fetchProfile})=>{
                 <input disabled value={phone} type="tel" className="form-control" placeholder="Enter your Phone Number" />
             </div>
 
-            <SubmitButton>
-            {
-                loading ? 
-                <Spinner animation="border" />:
-                "Submit"
-            }
-            </SubmitButton>
-            <p style={{textAlign:"center",fontSize:10}} >By proceeding you are agreeing to the terms that your number will be available for public</p>
+            <div style={{display:"flex",justifyContent:"center",width:"auto"}} >
+                <SubmitButton>
+                {
+                    loading ? 
+                    <Spinner animation="border" />:
+                    "Submit"
+                }
+                </SubmitButton>
+            </div>
+            <p style={{textAlign:"center",fontSize:10,marginTop:15}} >By proceeding you are agreeing to the terms that your information including your number will be publically available</p>
             
         </form>
         </ContainerContent>

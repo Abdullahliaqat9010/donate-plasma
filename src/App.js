@@ -6,6 +6,7 @@ import Home from './screens/home'
 import BecomeDonor from './screens/becomeDonor'
 import FindDonor from './screens/findDonor'
 import About from './screens/about'
+import ContactDonor from './screens/contactDonor'
 import NoPage from './screens/nopage'
 import Layout from './components/layout'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,6 +22,7 @@ function App() {
             <Route path='/' exact component={Home} />
             <Route path='/becomeDonor' component={BecomeDonor} />
             <Route path='/findDonor' component={FindDonor} />
+            <Route path='/contactDonor/:uid' component={ContactDonor} />
             <Route path='/about' component={About} />
             <Route component={NoPage} /> 
           </Switch>  
