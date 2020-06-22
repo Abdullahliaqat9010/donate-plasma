@@ -3,6 +3,7 @@ import CityOptions from '../components/city_options'
 import BloodGroupOptions from '../components/blood_group_options';
 import axios from 'axios'
 import Loading from '../components/loading';
+import {Link} from 'react-router-dom'
 
 // const people = [
 //     {key : '123', Name: 'Elson Correia', info: {age: 24, bloodGroup : 'A positive', city : 'Lahore'}},
@@ -28,6 +29,8 @@ const FindDonor = ()=>{
     changeBloodGroup(_bloodGroup)
   }
   const fetchDonors = async() => {
+    searchResults.length = 0
+    setLoading(true)
     const res = await axios.get('https://donate-plasma.herokuapp.com/donors',{
       params : {
         city : city,
@@ -55,7 +58,7 @@ const FindDonor = ()=>{
 
   return(
     <div className="scrollbar scrollbar-primary">
-      <p style = {{fontWeight : 'bold'}}>Please Select Your City and blood group to search a Donor</p>
+      <p style = {{fontWeight : 'bold'}}>Please Select Your City and Blood Group to Search a Donor</p>
       <div className="row">
         <div className="col-sm-6">
           <div className="form-group">
@@ -98,7 +101,7 @@ const FindDonor = ()=>{
                 <span>{person.city} </span>
                 </div>
                 <div className = "col-sm">
-                <button type="button" className="btn btn-success btn-sm float-right">Contact</button>
+                <Link to={`/contactDonor/${person.uid}`} ><button className="btn btn-success btn-sm float-right">Contact</button></Link>
                 </div>
                 </div>
                 </li>
