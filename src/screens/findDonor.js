@@ -4,18 +4,6 @@ import BloodGroupOptions from '../components/blood_group_options';
 import axios from 'axios'
 import Loading from '../components/loading';
 import {Link} from 'react-router-dom'
-
-// const people = [
-//     {key : '123', Name: 'Elson Correia', info: {age: 24, bloodGroup : 'A positive', city : 'Lahore'}},
-//     {key : '124', Name: 'John Doe', info: {age: 18, bloodGroup : 'A positive', city : 'Lahore'}},
-//     {key : '125', Name: 'Jane Doe', info: {age: 34, bloodGroup : 'A positive', city : 'Lahore'}},
-//     {key : '126', Name: 'Maria Carvalho', info: {age: 22, bloodGroup : 'A positive', city : 'Lahore'}},
-//     {key : '127', Name: 'Kelly Correia', info:{age: 23, bloodGroup : 'A positive', city : 'Lahore'}},
-//     {key : '128', Name: 'Don Quichote', info: {age: 39, bloodGroup : 'A positive', city : 'Lahore'}},
-//     {key : '129', Name: 'Marcus Correia', info: {age: 20, bloodGroup : 'A positive', city : 'Lahore'}},
-//     {key : '130', Name: 'Bruno Gonzales', info: {age: 25, bloodGroup : 'A positive', city : 'Lahore'}},
-//     {key : '131', Name: 'Alonzo Correia', info: {age: 44, bloodGroup : 'A positive', city : 'Lahore'}}
-//   ]
  
 const FindDonor = ()=>{
   const [city,changeCity] = React.useState("")
@@ -42,15 +30,6 @@ const FindDonor = ()=>{
     setLoading(false)
   }
 
-  // const contactDonor = async (uid)=>{
-  //   const res = await axios.get('http://localhost:5000/contactDonor',{
-  //     params:{
-  //       uid
-  //     }
-  //   })
-  //   const phone = res.data.phone
-  //   console.log(phone)
-  // }
 
   React.useEffect(()=>{
     fetchDonors()
