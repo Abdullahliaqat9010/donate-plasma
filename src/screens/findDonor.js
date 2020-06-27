@@ -93,8 +93,8 @@ const FindDonor = ()=>{
         searchResults.length < 10 && !loading &&
         (
           searchResults.length === 0 ?
-          <div style={{height:400,display:"flex",alignItems: "center", justifyContent:"center"}} ><p style={{fontSize:20,fontWeight:"bold"}}>Sorry we could 
-          not find a donor in this area. Try searching for nearby areas. We hope that your patient recovers soon. </p></div> :
+          <div style={{height:400,display:"flex",alignItems: "center", justifyContent:"center",textAlign:"center"}} ><p style={{fontSize:20,fontWeight:"bold"}}>Sorry we could 
+          not find a donor in this area. Try searching for nearby areas. </p></div> :
           <div style={{height:40*(10-searchResults.length)}} /> 
         )
       }
