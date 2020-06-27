@@ -4,6 +4,7 @@ import CityOption from '../components/city_options'
 import BloodGroupOptions from '../components/blood_group_options'
 import styled from 'styled-components'
 import {Spinner} from 'react-bootstrap'
+import firebase from '../firebase'
 
 const Container = styled.div`
     display:flex;
@@ -41,6 +42,21 @@ const SubmitButton = styled.button`
         background-color : white;
         color : #f7464c;
         outline : none;
+    }
+`;
+
+const ChangeNumber = styled.button`
+    background-color:white;
+    color: #f7464c;
+    border-radius:5px;
+    border:solid #f7464c 1px;
+    outline:none;
+    margin-left:5px;
+    &:hover,:active{
+        border:none;
+        color: white;
+        background-color:#f7464c;
+        outline:none;
     }
 `;
 
@@ -107,7 +123,10 @@ const RegisterDonor = ({phone,fetchProfile})=>{
             </div>
             <div className="form-group">
                 <label><b>Phone Number</b></label>
-                <input disabled value={phone} type="tel" className="form-control" placeholder="Enter your Phone Number" />
+                <div style={{display:"flex"}} >
+                    <input disabled value={phone} type="tel" className="form-control" placeholder="Enter your Phone Number" />
+                    <ChangeNumber onClick={async()=>await firebase.auth().signOut()} >Change</ChangeNumber>
+                </div>
             </div>
 
             <div style={{display:"flex",justifyContent:"center",width:"auto"}} >
@@ -119,7 +138,7 @@ const RegisterDonor = ({phone,fetchProfile})=>{
                 }
                 </SubmitButton>
             </div>
-            <p style={{textAlign:"center",fontSize:10,marginTop:15}} >By proceeding you are agreeing to the terms that your information including your number will be publically available</p>
+            <p style={{textAlign:"center",fontSize:10,marginTop:15}} >By proceeding you are agreeing to the terms that your information including your contact number will be publically available and you will provide <b>free donation.</b></p>
             
         </form>
         </ContainerContent>

@@ -4,18 +4,29 @@ import BloodGroupOptions from '../components/blood_group_options'
 import styled from 'styled-components';
 import axios from 'axios'
 import {Spinner} from 'react-bootstrap'
+import firebase from '../firebase'
 
+const ChangeMobile = styled.p`
+    font-size : 12px;
+    border : none;
+    outline : none;
+    &:hover , &:active {
+        color : #f7464c;
+        border : none;
+        outline : none;
+    }
+`;
 const Container = styled.div`
     display:flex;
     align-items:flex-start;
     justify-content:center;
-    height:630px;
+    height:650px;
     width:auto;
 `;
 
 const ContainerContent = styled.div`
     width:350px;
-    height:630px;
+    height:650px;
     display:flex;
     align-items:center;
     justify-content:flex-start;
@@ -95,7 +106,7 @@ const EditDeleteDonor = (props) => {
         setMsg("")
         setEditLoading(true)
         try {
-            const res = await axios.put('https://donate-plasma.herokuapp.com/donor',{
+            await axios.put('https://donate-plasma.herokuapp.com/donor',{
                 name,
                 age,
                 city,
@@ -190,7 +201,8 @@ const EditDeleteDonor = (props) => {
                 }
             </DeleteButton>
         </form>
-        <Msg success={success} error={error} >{msg}</Msg>
+            <Msg success={success} error={error} >{msg}</Msg>
+            <ChangeMobile onClick={async()=>await firebase.auth().signOut()} >Change mobile number?</ChangeMobile>   
         </ContainerContent>
         </Container>
     )
