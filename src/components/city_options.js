@@ -1,8 +1,31 @@
 import React from 'react';
+import styled from 'styled-components'
 
-const CityOption = ({getValueFromCity,required,value}) => (
-    <select value={value} required={required} className="form-control" onChange={(ref)=>getValueFromCity(ref.target.value)}>
-        <option value="" hidden>Select The City</option>
+const ResetButton = styled.button`
+    background-color:white;
+    color: #f7464c;
+    border-radius:5px;
+    border:solid #f7464c 1px;
+    outline:none;
+    margin-left:5px;
+    &:hover,:active{
+        border:none;
+        color: white;
+        background-color:#f7464c;
+        outline:none;
+    }
+`;
+
+const CityOption = ({getValueFromCity,required,value,reset}) => {
+    const [selected,setSelected] = React.useState(value)
+    const handleSelected = (selection)=>{
+        getValueFromCity(selection)
+        setSelected(selection)
+    }
+    return(
+    <div style={{display:"flex"}}>
+    <select value={selected} required={required} className="form-control" onChange={(ref)=>handleSelected(ref.target.value)}>
+        <option value="" hidden >Select The City</option>
         <option value="Islamabad">Islamabad</option>
         <option value="" disabled style = {{fontWeight : 'bold'}}>Punjab Cities</option>
         <option value="Ahmed Nager Chatha">Ahmed Nager Chatha</option>
@@ -243,6 +266,15 @@ const CityOption = ({getValueFromCity,required,value}) => (
         <option value="Zhob">Zhob</option>
         <option value="Ziarat">Ziarat</option>
     </select>
-)
+    {
+    reset &&
+    <ResetButton 
+        onClick={()=>{
+            handleSelected("")
+        }}
+    >Reset</ResetButton>}
+    </div>
+    )
+}
 
 export default CityOption

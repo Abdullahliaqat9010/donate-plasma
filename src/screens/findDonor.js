@@ -62,12 +62,12 @@ const FindDonor = ()=>{
       <div className="row">
         <div className="col-sm-6">
           <div className="form-group">
-            <CityOptions getValueFromCity={getValueFromCity} />
+            <CityOptions reset getValueFromCity={getValueFromCity} />
           </div>
         </div>
         <div className="col-sm-6">
           <div className="form-group">
-            <BloodGroupOptions getValueFromBloodGroup={getValueFromBloodGroup} />
+            <BloodGroupOptions reset getValueFromBloodGroup={getValueFromBloodGroup} />
           </div>
         </div>
       </div>

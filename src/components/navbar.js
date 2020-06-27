@@ -70,9 +70,9 @@ const NavBar = ()=>{
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ml-auto pr-5" >
                             <Link style={{textDecoration:"none"}} to="/" ><StyledLink onClick={()=>setExpanded(false)}>Home</StyledLink></Link>
-                            <Link style={{textDecoration:"none"}} to="/about" ><StyledLink onClick={()=>setExpanded(false)} >About Us</StyledLink></Link>
                             <Link style={{textDecoration:"none"}} to="/becomeDonor" ><StyledLink onClick={()=>setExpanded(false)} >Donate Now</StyledLink></Link>
                             <Link style={{textDecoration:"none"}} to="/findDonor" ><StyledLink onClick={()=>setExpanded(false)} >Find Donor</StyledLink></Link>
+                            <Link style={{textDecoration:"none"}} to="/about" ><StyledLink onClick={()=>setExpanded(false)} >About Us</StyledLink></Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
