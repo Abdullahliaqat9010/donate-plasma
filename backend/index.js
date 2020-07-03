@@ -41,7 +41,7 @@ app.get('/donors', async(req,res)=>{
     if(bloodGroup){
         queryObj = {...queryObj,bloodGroup}
     }
-    const donors = await Donor.find(queryObj,{phone:0,_id:0}).limit(20).exec()
+    const donors = await Donor.find(queryObj,{phone:0,_id:0}).limit(50).exec()
     res.send(donors)
 })
 
