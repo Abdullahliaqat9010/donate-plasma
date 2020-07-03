@@ -257,6 +257,7 @@ const CityOption = ({getValueFromCity,required,value,reset}) => {
         <option value="Nasirabad">Nasirabad</option>
         <option value="Nushki">Nushki</option>
         <option value="Panjgur">Panjgur</option>
+        <option value="Parachinar">Parachinar</option>
         <option value="Pishin valley">Pishin Valley</option>
         <option value="Quetta">Quetta</option>
         <option value="Sherani">Sherani</option>
